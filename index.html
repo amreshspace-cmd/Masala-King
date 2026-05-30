@@ -1,0 +1,703 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <title>Masala King | Индийские мастер-классы для россиян</title>
+  <!-- Google Fonts + Font Awesome 6 -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      background: #fffaf5;
+      color: #2c2b28;
+      line-height: 1.5;
+      scroll-behavior: smooth;
+    }
+
+    .container {
+      max-width: 1280px;
+      margin: 0 auto;
+      padding: 0 24px;
+    }
+
+    section {
+      padding: 80px 0;
+    }
+
+    h1, h2, h3 {
+      font-weight: 700;
+      letter-spacing: -0.02em;
+    }
+
+    h2 {
+      font-size: 2.3rem;
+      margin-bottom: 1rem;
+    }
+
+    .section-subhead {
+      color: #c94f1f;
+      font-weight: 700;
+      text-transform: uppercase;
+      font-size: 0.85rem;
+      letter-spacing: 3px;
+      margin-bottom: 0.75rem;
+    }
+
+    .gradient-text {
+      background: linear-gradient(135deg, #b7410e, #e67e22);
+      background-clip: text;
+      -webkit-background-clip: text;
+      color: transparent;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      padding: 12px 28px;
+      border-radius: 50px;
+      font-weight: 600;
+      font-size: 1rem;
+      transition: all 0.25s ease;
+      text-decoration: none;
+      border: none;
+      cursor: pointer;
+    }
+
+    .btn-primary {
+      background: linear-gradient(95deg, #b7410e, #e67e22);
+      color: white;
+      box-shadow: 0 6px 14px rgba(183, 65, 14, 0.25);
+    }
+
+    .btn-primary:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 12px 20px -8px rgba(230, 126, 34, 0.4);
+    }
+
+    .btn-outline {
+      background: transparent;
+      border: 2px solid #e67e22;
+      color: #e67e22;
+    }
+
+    .btn-outline:hover {
+      background: #e67e2210;
+      border-color: #b7410e;
+      color: #b7410e;
+    }
+
+    .btn-wa {
+      background: #25D366;
+      color: white;
+    }
+
+    .btn-tg {
+      background: #0088cc;
+      color: white;
+    }
+
+    /* navbar */
+    .navbar {
+      position: sticky;
+      top: 0;
+      background: rgba(255, 250, 245, 0.96);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid #f3e2d4;
+      padding: 16px 0;
+      z-index: 100;
+    }
+
+    .nav-container {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+    }
+
+    .logo {
+      font-size: 1.8rem;
+      font-weight: 800;
+      letter-spacing: -0.02em;
+    }
+
+    .logo span:first-child {
+      background: linear-gradient(125deg, #b7410e, #e67e22);
+      background-clip: text;
+      -webkit-background-clip: text;
+      color: transparent;
+    }
+
+    .logo span:last-child {
+      color: #c94f1f;
+      font-size: 1rem;
+      font-weight: 500;
+      margin-left: 4px;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 32px;
+      list-style: none;
+    }
+
+    .nav-links a {
+      text-decoration: none;
+      font-weight: 500;
+      color: #3e3a34;
+      transition: 0.2s;
+    }
+
+    .nav-links a:hover {
+      color: #b7410e;
+    }
+
+    /* Hero */
+    .hero {
+      background: linear-gradient(105deg, #fff2e6 0%, #ffe6d5 100%);
+      border-radius: 0 0 48px 48px;
+    }
+
+    .hero-grid {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 48px;
+    }
+
+    .hero-content {
+      flex: 1;
+    }
+
+    .hero-image {
+      flex: 1;
+      border-radius: 36px;
+      overflow: hidden;
+      box-shadow: 0 25px 30px -12px rgba(0, 0, 0, 0.15);
+    }
+
+    .hero-image img {
+      width: 100%;
+      height: auto;
+      display: block;
+    }
+
+    .badge {
+      background: #fff0e0;
+      color: #b7410e;
+      border-radius: 40px;
+      padding: 6px 18px;
+      font-size: 0.85rem;
+      font-weight: 700;
+      display: inline-block;
+      margin-bottom: 20px;
+    }
+
+    .live-badge {
+      background: #e63946;
+      color: white;
+      animation: pulse 1.5s infinite;
+    }
+
+    @keyframes pulse {
+      0% { opacity: 0.7; transform: scale(1);}
+      50% { opacity: 1; transform: scale(1.02);}
+      100% { opacity: 0.7; transform: scale(1);}
+    }
+
+    /* gallery */
+    .gallery-grid {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 28px;
+      margin-top: 40px;
+      justify-content: center;
+    }
+
+    .gallery-card {
+      background: white;
+      border-radius: 28px;
+      overflow: hidden;
+      box-shadow: 0 12px 24px -12px rgba(0, 0, 0, 0.08);
+      width: 320px;
+      border: 1px solid #f5e2d2;
+      transition: 0.2s;
+    }
+
+    .gallery-card:hover {
+      transform: translateY(-6px);
+      box-shadow: 0 25px 30px -12px rgba(0, 0, 0, 0.12);
+    }
+
+    .gallery-card img {
+      width: 100%;
+      height: 260px;
+      object-fit: cover;
+      display: block;
+    }
+
+    .gallery-card p {
+      padding: 16px 20px;
+      font-weight: 500;
+      text-align: center;
+    }
+
+    .dishes-grid, .program-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(270px, 1fr));
+      gap: 32px;
+      margin-top: 40px;
+    }
+
+    .dish-card, .program-card {
+      background: white;
+      border-radius: 28px;
+      padding: 24px;
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.02);
+      border: 1px solid #f3e1d2;
+      transition: 0.2s;
+    }
+
+    .dish-card:hover, .program-card:hover {
+      border-color: #facfaf;
+    }
+
+    .dish-card i, .program-card i {
+      font-size: 2.5rem;
+      color: #e67e22;
+      margin-bottom: 18px;
+    }
+
+    .chef-section {
+      background: #fff5ed;
+      border-radius: 48px;
+      padding: 48px;
+      margin-top: 20px;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 48px;
+      align-items: center;
+    }
+
+    .chef-img {
+      flex: 0.8;
+      border-radius: 36px;
+      overflow: hidden;
+      box-shadow: 0 18px 28px -12px rgba(0, 0, 0, 0.1);
+    }
+
+    .chef-img img {
+      width: 100%;
+      height: auto;
+      display: block;
+    }
+
+    .chef-bio {
+      flex: 1.2;
+    }
+
+    .testimonial-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 30px;
+      margin-top: 40px;
+    }
+
+    .testimonial-card {
+      background: white;
+      border-radius: 28px;
+      padding: 28px;
+      box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.04);
+      border-left: 6px solid #e67e22;
+    }
+
+    .price-box {
+      background: linear-gradient(125deg, #221f1a, #3b3126);
+      color: white;
+      border-radius: 40px;
+      padding: 42px;
+      text-align: center;
+      margin: 40px 0;
+    }
+
+    .form-card {
+      background: white;
+      border-radius: 40px;
+      padding: 40px;
+      box-shadow: 0 25px 40px -12px rgba(0, 0, 0, 0.08);
+      border: 1px solid #f3e1d2;
+    }
+
+    .form-group {
+      margin-bottom: 22px;
+    }
+
+    input, textarea {
+      width: 100%;
+      padding: 14px 20px;
+      border: 1.5px solid #eedbcb;
+      border-radius: 60px;
+      font-family: 'Inter', sans-serif;
+      font-size: 1rem;
+      background: #fff;
+      transition: 0.2s;
+    }
+
+    input:focus, textarea:focus {
+      outline: none;
+      border-color: #e67e22;
+      box-shadow: 0 0 0 3px rgba(230, 126, 34, 0.15);
+    }
+
+    textarea {
+      border-radius: 24px;
+      resize: vertical;
+    }
+
+    .radio-group {
+      display: flex;
+      gap: 28px;
+      flex-wrap: wrap;
+      margin-top: 8px;
+    }
+
+    .btn-block {
+      width: 100%;
+      justify-content: center;
+    }
+
+    .contact-bar {
+      background: #ffffffd9;
+      backdrop-filter: blur(12px);
+      border-radius: 80px;
+      padding: 12px 24px;
+      display: inline-flex;
+      gap: 20px;
+      margin-top: 24px;
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.05);
+      border: 1px solid #ffddc4;
+    }
+
+    footer {
+      background: #1c1814;
+      color: #cfc6bc;
+      padding: 48px 0 24px;
+      margin-top: 40px;
+    }
+
+    .footer-content {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      gap: 32px;
+    }
+
+    .social-icons a {
+      color: #cfc6bc;
+      font-size: 1.5rem;
+      margin-right: 20px;
+      transition: 0.2s;
+    }
+
+    .social-icons a:hover {
+      color: #e67e22;
+    }
+
+    .instruction-note {
+      background: #fff2e6;
+      border-left: 5px solid #e67e22;
+      padding: 14px 20px;
+      border-radius: 20px;
+      margin-top: 30px;
+      font-size: 0.9rem;
+    }
+
+    @media (max-width: 768px) {
+      .nav-links {
+        gap: 18px;
+        font-size: 0.9rem;
+      }
+      h2 {
+        font-size: 1.9rem;
+      }
+      section {
+        padding: 50px 0;
+      }
+      .chef-section {
+        padding: 28px;
+      }
+      .hero-grid {
+        flex-direction: column;
+      }
+      .contact-bar {
+        flex-direction: column;
+        text-align: center;
+      }
+    }
+  </style>
+</head>
+<body>
+
+<nav class="navbar">
+  <div class="container nav-container">
+    <div class="logo">
+      <span>MASALA KING</span> <span>👑</span>
+    </div>
+    <ul class="nav-links">
+      <li><a href="#about">О нас</a></li>
+      <li><a href="#program">Программа</a></li>
+      <li><a href="#gallery">Наши события</a></li>
+      <li><a href="#signup">Запись</a></li>
+    </ul>
+  </div>
+</nav>
+
+<main>
+  <div class="hero">
+    <div class="container hero-grid" style="padding: 40px 24px 60px 24px;">
+      <div class="hero-content">
+        <div class="badge live-badge"><i class="fas fa-circle" style="font-size: 0.7rem; margin-right: 6px;"></i> КЛАССЫ СТАРТОВАЛИ — 25 ИЮНЯ!</div>
+        <h1 style="font-size: 3.3rem; line-height: 1.2;">Мастер-класс <span class="gradient-text">по индийской кухне</span><br>для гурманов России</h1>
+        <p style="font-size: 1.2rem; margin: 24px 0 28px; color: #4a3b2f;">Погрузитесь в мир пряных ароматов, научитесь готовить настоящий тандури, наан, бирьяни и масала чай. Шеф-повар с русским переводом, реальные фото с наших занятий. <strong>Занятия уже идут с 25 июня!</strong> Присоединяйтесь к ближайшей группе.</p>
+        <div style="display: flex; gap: 16px; flex-wrap: wrap;">
+          <a href="#signup" class="btn btn-primary"><i class="fas fa-ticket-alt"></i> Записаться сейчас</a>
+          <a href="#gallery" class="btn btn-outline"><i class="fas fa-images"></i> Фото с занятий</a>
+        </div>
+        <div class="contact-bar">
+          <a href="https://wa.me/79015355480" target="_blank" style="background:#25D366; padding: 8px 22px; border-radius: 40px; color: white; text-decoration: none; display: inline-flex; gap: 8px;"><i class="fab fa-whatsapp"></i> WhatsApp +7 901 535-54-80</a>
+          <a href="https://t.me/+79015355480" target="_blank" style="background:#0088cc; padding: 8px 22px; border-radius: 40px; color: white; text-decoration: none; display: inline-flex; gap: 8px;"><i class="fab fa-telegram"></i> Telegram +7 901 535-54-80</a>
+        </div>
+      </div>
+      <div class="hero-image">
+        <img src="https://images.unsplash.com/photo-1505253758473-96b7015fcd40?w=600&auto=format" alt="Индийские специи и блюда">
+      </div>
+    </div>
+  </div>
+
+  <section id="about">
+    <div class="container">
+      <div class="section-subhead"><i class="fas fa-king"></i> Masala King experience</div>
+      <h2>Аутентичная Индия <br> в сердце Москвы</h2>
+      <p style="max-width: 720px; margin-bottom: 48px; font-size: 1.1rem;">Мы — команда, которая объединила любовь к индийской кухне и русское гостеприимство. Уже провели 14 живых мастер-классов для россиян. <strong>Сезон 2026 года открыт с 25 июня!</strong> Вы не только научитесь готовить, но и почувствуете душу Индии.</p>
+      <div class="dishes-grid">
+        <div class="dish-card"><i class="fas fa-mortar-pestle"></i><h3>Авторские рецепты</h3><p>Секреты семейных рецептов из Пенджаба, Гоа и Дели.</p></div>
+        <div class="dish-card"><i class="fas fa-language"></i><h3>Русскоязычный шеф</h3><p>Все материалы и общение полностью на русском языке.</p></div>
+        <div class="dish-card"><i class="fas fa-hand-sparkles"></i><h3>5 часов практики</h3><p>Готовим, дегустируем и забираем рецепты домой.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <section id="program" style="background: #fff8f2;">
+    <div class="container">
+      <div class="section-subhead"><i class="fas fa-utensils"></i> Королевское меню</div>
+      <h2>Что вы приготовите с нами</h2>
+      <div class="program-grid">
+        <div class="program-card"><i class="fas fa-drumstick-bite"></i><h3>Курица Баттер масала</h3><p>Шедевр с маслянистым соусом и ароматом тандура.</p></div>
+        <div class="program-card"><i class="fas fa-bread-slice"></i><h3>Наан с чесноком</h3><p>Пышные лепёшки, которые тают во рту.</p></div>
+        <div class="program-card"><i class="fas fa-carrot"></i><h3>Самоса с овощами</h3><p>Хрустящие треугольники с пряной начинкой.</p></div>
+        <div class="program-card"><i class="fas fa-rice"></i><h3>Бирьяни с бараниной</h3><p>Рис, шафран и пряное мясо — король стола.</p></div>
+        <div class="program-card"><i class="fas fa-candy-cane"></i><h3>Гулаб Джамун</h3><p>Нежнейший десерт в розовом сиропе.</p></div>
+        <div class="program-card"><i class="fas fa-mug-hot"></i><h3>Масала чай</h3><p>Пряный чай с имбирём и кардамоном.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- GALLERY with your real image (IMG_4036.jpeg) - instruction inside -->
+  <section id="gallery">
+    <div class="container">
+      <div class="section-subhead"><i class="fas fa-camera"></i> Живые кадры</div>
+      <h2>Реальные события с русскими участниками</h2>
+      <div class="gallery-grid">
+        <!-- ===================================================== -->
+        <!--  ЗАМЕНИТЕ src НА ВАШЕ РЕАЛЬНОЕ ФОТО (IMG_4036.jpeg)    -->
+        <!--  Поместите файл IMG_4036.jpeg в ту же папку, что и HTML -->
+        <!-- ===================================================== -->
+        <div class="gallery-card">
+          <img src="IMG_4036.jpeg" alt="Наш мастер-класс с россиянами" onerror="this.onerror=null; this.src='https://placehold.co/600x400/f9e5d1/5a3e2b?text=Загрузите+IMG_4036.jpeg+в+ту+же+папку';">
+          <p>👑 Masala King — готовим вместе с русскими гостями (июнь 2026)</p>
+        </div>
+        <div class="gallery-card">
+          <img src="https://images.unsplash.com/photo-1559314809-0d155014e29e?w=600&auto=format" alt="Участники смеются за готовкой">
+          <p>🔥 Эмоции и ароматы специй</p>
+        </div>
+        <div class="gallery-card">
+          <img src="https://images.unsplash.com/photo-1574483934031-154be4493abd?w=600&auto=format" alt="Дегустация после занятия">
+          <p>🍛 Дегустация — самая вкусная часть</p>
+        </div>
+      </div>
+      <div class="instruction-note">
+        <i class="fas fa-info-circle" style="color:#e67e22; margin-right: 8px;"></i> 
+        <strong>Как показать ваше реальное фото:</strong> сохраните файл <code>IMG_4036.jpeg</code> в ТОЙ ЖЕ ПАПКЕ, где находится этот HTML-файл. После обновления страницы ваше фото отобразится первым в галерее. Если вы хотите другое имя файла — измените значение <code>src="..."</code> в коде выше.
+      </div>
+      <div style="text-align: center; margin-top: 28px;">
+        <p><i class="fas fa-check-circle" style="color: #e67e22;"></i> Более 200 участников из России уже стали частью Masala King. Присоединяйтесь к летней серии!</p>
+      </div>
+    </div>
+  </section>
+
+  <section id="chef">
+    <div class="container">
+      <div class="chef-section">
+        <div class="chef-img">
+          <img src="https://images.unsplash.com/photo-1583394293214-28ded15ee548?w=500&auto=format" alt="Шеф-повар Викрам">
+        </div>
+        <div class="chef-bio">
+          <div class="section-subhead"><i class="fas fa-user-chef"></i> Король пряностей</div>
+          <h2>Шеф Викрам Мехта</h2>
+          <p style="margin-bottom: 16px;">Родом из Мумбаи, за плечами 14 лет кулинарного мастерства. Викрам объездил полмира, но именно Россия стала его второй семьей. Он адаптировал каждое блюдо под доступные российские продукты, сохранив 100% аутентичный вкус.</p>
+          <p><i class="fas fa-star" style="color:#f1c40f;"></i> Провёл более 180 мастер-классов в Москве, СПБ, Казани и Екатеринбурге.</p>
+          <p><i class="fas fa-microphone-alt"></i> Занятия ведутся на русском языке с профессиональным переводом.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="testimonials">
+    <div class="container">
+      <div class="section-subhead"><i class="fas fa-comments"></i> Отзывы</div>
+      <h2>Что говорят наши гости</h2>
+      <div class="testimonial-grid">
+        <div class="testimonial-card">
+          <i class="fas fa-quote-left" style="font-size: 1.8rem; color: #e67e22; opacity: 0.5;"></i>
+          <p style="margin: 12px 0;">"Масала Кинг — это любовь! Я никогда не думала, что смогу сама приготовить такой наан. Викрам очень душевный, а переводчик объясняет всё до мелочей."</p>
+          <h4>— Елена, Москва</h4>
+        </div>
+        <div class="testimonial-card">
+          <i class="fas fa-quote-left" style="font-size: 1.8rem; color: #e67e22; opacity: 0.5;"></i>
+          <p style="margin: 12px 0;">"Ходил с женой – восторг. Бирьяни получился как в лучших ресторанах Дели. Обязательно придём на следующий класс с друзьями."</p>
+          <h4>— Максим, Санкт-Петербург</h4>
+        </div>
+        <div class="testimonial-card">
+          <i class="fas fa-quote-left" style="font-size: 1.8rem; color: #e67e22; opacity: 0.5;"></i>
+          <p style="margin: 12px 0;">"Теперь у меня дома индийские ужины – это традиция. Спасибо за рецепты и тёплую атмосферу. Отдельное спасибо за WhatsApp-поддержку после курса!"</p>
+          <h4>— Ольга, Казань</h4>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="container">
+    <div class="price-box">
+      <i class="fas fa-calendar-alt" style="font-size: 2rem; margin-bottom: 12px;"></i>
+      <h3 style="font-size: 1.8rem;">Летнее расписание — классы уже идут!</h3>
+      <p style="margin: 16px 0 8px;"><strong>🗓️ Ближайшие даты:</strong> 25 июня, 2 июля, 9 июля, 16 июля 2026 (каждая среда и суббота)</p>
+      <p><strong>🕛 Время:</strong> 12:00 – 17:00 или 18:00 – 23:00 (по набору группы)</p>
+      <p style="font-size: 2.2rem; font-weight: 800; margin: 12px 0;">5 500 ₽</p>
+      <p style="text-decoration: line-through; opacity: 0.8;">обычная цена 7 200 ₽</p>
+      <p><i class="fas fa-gift"></i> Акция до 10 июля: <strong>4 900 ₽</strong> + набор фирменных специй в подарок</p>
+      <p><i class="fas fa-location-dot"></i> Кулинарная студия Masala King, Москва, м. Павелецкая, ул. Дубининская, 12</p>
+      <p><i class="fas fa-hourglass-half"></i> <strong>Осталось 8 мест на июнь-июль!</strong></p>
+      <div style="margin-top: 25px;">
+        <a href="https://wa.me/79015355480" target="_blank" style="background:#25D366; color:white; padding:10px 24px; border-radius:40px; text-decoration:none; display:inline-flex; gap:8px; margin:0 8px;"><i class="fab fa-whatsapp"></i> Запись в WhatsApp</a>
+        <a href="https://t.me/+79015355480" target="_blank" style="background:#0088cc; color:white; padding:10px 24px; border-radius:40px; text-decoration:none; display:inline-flex; gap:8px;"><i class="fab fa-telegram"></i> Telegram</a>
+      </div>
+    </div>
+  </div>
+
+  <section id="signup">
+    <div class="container">
+      <div class="form-card">
+        <div class="section-subhead"><i class="fas fa-pen-ruler"></i> Заявка на участие</div>
+        <h2>Забронируйте место короля</h2>
+        <p style="margin-bottom: 28px;">Количество участников строго ограничено (до 12 человек). Заполните форму, и мы подтвердим бронирование. <strong>Классы стартовали 25 июня — успейте записаться на ближайшую дату!</strong></p>
+        <form id="registrationForm">
+          <div class="form-group">
+            <input type="text" id="name" placeholder="Ваше полное имя *" required>
+          </div>
+          <div class="form-group">
+            <input type="email" id="email" placeholder="Электронная почта *" required>
+          </div>
+          <div class="form-group">
+            <input type="tel" id="phone" placeholder="Номер телефона *" required>
+          </div>
+          <div class="form-group">
+            <div class="radio-group">
+              <label><input type="radio" name="date" value="25 июня 2026" required> 25 июня (среда)</label>
+              <label><input type="radio" name="date" value="2 июля 2026"> 2 июля (четверг)</label>
+              <label><input type="radio" name="date" value="9 июля 2026"> 9 июля (четверг)</label>
+              <label><input type="radio" name="date" value="16 июля 2026"> 16 июля (четверг)</label>
+            </div>
+          </div>
+          <div class="form-group">
+            <textarea rows="3" placeholder="Пожелания / аллергии / вопросы"></textarea>
+          </div>
+          <div class="form-group">
+            <label><input type="checkbox" id="consent" required> Я соглашаюсь на обработку персональных данных и получение информации о мастер-классе.</label>
+          </div>
+          <button type="submit" class="btn btn-primary btn-block"><i class="fas fa-crown"></i> Отправить заявку</button>
+          <p style="font-size: 0.8rem; margin-top: 20px; text-align: center;">После отправки наш менеджер свяжется с вами для подтверждения. Также вы всегда можете написать в WhatsApp/Telegram <strong>+7 901 535-54-80</strong>.</p>
+        </form>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="container footer-content">
+    <div>
+      <div class="logo" style="margin-bottom: 12px;"><span>MASALA KING</span> <span>👑</span></div>
+      <p>Королевская индийская кухня для российских ценителей.</p>
+    </div>
+    <div>
+      <h4>Контакты</h4>
+      <p><i class="fab fa-whatsapp"></i> <a href="https://wa.me/79015355480" style="color:#e67e22;">+7 901 535-54-80</a></p>
+      <p><i class="fab fa-telegram"></i> <a href="https://t.me/+79015355480" style="color:#e67e22;">+7 901 535-54-80</a></p>
+      <p><i class="fas fa-envelope"></i> king@masalaking.ru</p>
+    </div>
+    <div>
+      <h4>Следите за нами</h4>
+      <div class="social-icons">
+        <a href="#"><i class="fab fa-instagram"></i></a>
+        <a href="#"><i class="fab fa-vk"></i></a>
+        <a href="#"><i class="fab fa-youtube"></i></a>
+      </div>
+    </div>
+  </div>
+  <div style="text-align: center; margin-top: 40px; font-size: 0.8rem;">© 2026 Masala King — всё об индийской кухне для русских гурманов. Классы стартовали 25 июня!</div>
+</footer>
+
+<script>
+  // Smooth scroll for anchor links
+  document.querySelectorAll('.nav-links a, .btn-primary[href="#signup"], .btn-outline[href="#gallery"]').forEach(anchor => {
+    anchor.addEventListener('click', function(e) {
+      const hash = this.getAttribute('href');
+      if (hash && hash.startsWith('#')) {
+        e.preventDefault();
+        const targetElem = document.querySelector(hash);
+        if (targetElem) targetElem.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      }
+    });
+  });
+
+  // Form submit handler
+  const form = document.getElementById('registrationForm');
+  form.addEventListener('submit', (e) => {
+    e.preventDefault();
+    const name = document.getElementById('name').value.trim();
+    const email = document.getElementById('email').value.trim();
+    const phone = document.getElementById('phone').value.trim();
+    const selectedDate = document.querySelector('input[name="date"]:checked');
+    const consent = document.getElementById('consent').checked;
+
+    if (!name || !email || !phone || !selectedDate || !consent) {
+      alert('❌ Пожалуйста, заполните все обязательные поля (имя, email, телефон, дата и согласие).');
+      return;
+    }
+    if (!email.includes('@')) {
+      alert('Введите корректный email.');
+      return;
+    }
+    alert(`✅ Спасибо, ${name}! Ваша заявка на ${selectedDate.value} принята. Мы свяжемся с вами в ближайшее время. Занятия уже идут с 25 июня — добро пожаловать в Masala King! 👑🌶️`);
+    form.reset();
+  });
+</script>
+</body>
+</html>
