@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Расписание · Masala King</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: 'Segoe UI', Roboto, sans-serif;
+            background: #FEF3E2;
+            color: #2D1F1A;
+        }
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 24px;
+        }
+        .header {
+            background: white;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+        .nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            padding: 16px 0;
+        }
+        .logo h1 {
+            font-size: 1.8rem;
+            background: linear-gradient(135deg, #C0392B, #E67E22);
+            background-clip: text;
+            -webkit-background-clip: text;
+            color: transparent;
+        }
+        .nav-links {
+            display: flex;
+            gap: 32px;
+            font-weight: 600;
+        }
+        .nav-links a {
+            text-decoration: none;
+            color: #2D1F1A;
+        }
+        .nav-links a:hover, .nav-links .active {
+            color: #E67E22;
+        }
+        .btn {
+            display: inline-block;
+            padding: 12px 28px;
+            border-radius: 60px;
+            font-weight: 700;
+            text-decoration: none;
+            border: none;
+            cursor: pointer;
+        }
+        .btn-primary {
+            background: #E67E22;
+            color: white;
+        }
+        .btn-primary:hover {
+            background: #C0392B;
+        }
+        .schedule-card {
+            background: white;
+            border-radius: 36px;
+            padding: 32px;
+            margin: 40px 0;
+            box-shadow: 0 8px 20px rgba(0,0,0,0.05);
+        }
+        .slot-buttons {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 14px;
+            margin: 20px 0;
+        }
+        .slot {
+            background: #F2E2D2;
+            padding: 10px 24px;
+            border-radius: 40px;
+            cursor: pointer;
+            font-weight: 500;
+            transition: 0.2s;
+        }
+        .slot.selected {
+            background: #E67E22;
+            color: white;
+        }
+        .payment-option {
+            display: flex;
+            gap: 18px;
+            flex-wrap: wrap;
+            margin: 20px 0;
+        }
+        .payment-method {
+            background: #F2E2D2;
+            padding: 10px 24px;
+            border-radius: 60px;
+            cursor: pointer;
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            font-weight: 500;
+        }
+        .payment-method.selected {
+            background: #E67E22;
+            color: white;
+        }
+        .donation-block {
+            background: #F3E2CF;
+            border-radius: 32px;
+            padding: 20px;
+            text-align: center;
+            margin: 30px 0;
+        }
+        .form-group {
+            margin-bottom: 20px;
+        }
+        .form-group input {
+            width: 100%;
+            padding: 14px 20px;
+            border-radius: 60px;
+            border: 1px solid #E2C7AA;
+            font-size: 1rem;
+        }
+        .whatsapp-green { color: #25D366; }
+        .telegram-blue { color: #229ED9; }
+        .tbank-yellow { background: #FDD51B; padding: 4px 12px; border-radius: 40px; display: inline-block; font-weight: bold; color: #1E1E1E; }
+        .sber-green { background: #21A038; padding: 4px 12px; border-radius: 40px; display: inline-block; color: white; }
+        footer {
+            background: #1F2E1E;
+            color: #EEDBC5;
+            text-align: center;
+            padding: 32px 0;
+            margin-top: 64px;
+            border-radius: 40px 40px 0 0;
+        }
+        @media (max-width: 750px) {
+            .nav { flex-direction: column; gap: 12px; }
+        }
+    </style>
+</head>
+<body>
+<div class="header">
+    <div class="container">
+        <div class="nav">
+            <div class="logo"><h1>👑 Masala King</h1></div>
+            <div class="nav-links">
+                <a href="index.html">Главная</a>
+                <a href="classes.html" class="active">Мастер-классы</a>
+                <a href="contact.html">Контакты</a>
+            </div>
+        </div>
+    </div>
+</div>
+
+<main class="container">
+    <h2 style="font-size: 2.2rem; margin: 40px 0 10px;">🗓️ Ближайшие занятия</h2>
+    <div class="schedule-card" id="bookingBlock">
+        <h3>Выберите дату и оплатите участие</h3>
+        <div class="slot-buttons" id="slotContainer">
+            <div class="slot" data-slot="15 июня, вс 12:00">15 июня, 12:00</div>
+            <div class="slot" data-slot="22 июня, вс 14:00">22 июня, 14:00</div>
+            <div class="slot" data-slot="29 июня, вс 11:00">29 июня, 11:00</div>
+            <div class="slot" data-slot="6 июля, вс 13:00">6 июля, 13:00</div>
+        </div>
+
+        <div class="form-group">
+            <label>Ваше имя</label>
+            <input type="text" id="userName" placeholder="Елена Смирнова">
+        </div>
+        <div class="form-group">
+            <label>Телефон (свяжемся для подтверждения)</label>
+            <input type="tel" id="userPhone" placeholder="+7 XXX XXX XX XX">
+        </div>
+
+        <h4>Способ оплаты:</h4>
+        <div class="payment-option" id="paymentContainer">
+            <div class="payment-method" data-payment="tbank"><span class="tbank-yellow">Т-Банк</span></div>
+            <div class="payment-method" data-payment="sber"><span class="sber-green">СберБанк</span></div>
+        </div>
+
+        <div class="donation-block">
+            💝 <strong>Поддержать проект (донат)</strong> 💝<br>
+            Переведите любую сумму на тот же номер <strong>+7 901 535 5480</strong> (Т-Банк или Сбер) с пометкой «Донат для Masala King».
+        </div>
+
+        <button id="bookNowBtn" class="btn btn-primary">✅ Забронировать слот за 1000 ₽</button>
+        <div id="bookingMessage" style="margin-top: 20px; background: #EFF7EC; padding: 16px; border-radius: 28px; display: none;"></div>
+    </div>
+
+    <div style="margin: 40px 0; text-align: center;">
+        <p><i class="fab fa-whatsapp whatsapp-green" style="font-size: 1.5rem;"></i> <strong>WhatsApp</strong> +7 933 687 7293 &nbsp;&nbsp;&nbsp; 
+        <i class="fab fa-telegram telegram-blue" style="font-size: 1.5rem;"></i> <strong>Telegram</strong> +7 933 687 7293</p>
+    </div>
+</main>
+
+<script>
+    let selectedSlot = null;
+    let selectedPayment = null;
+    const slots = document.querySelectorAll('.slot');
+    const payments = document.querySelectorAll('.payment-method');
+    const bookBtn = document.getElementById('bookNowBtn');
+    const msgDiv = document.getElementById('bookingMessage');
+
+    slots.forEach(btn => {
+        btn.addEventListener('click', () => {
+            slots.forEach(b => b.classList.remove('selected'));
+            btn.classList.add('selected');
+            selectedSlot = btn.getAttribute('data-slot');
+        });
+    });
+    payments.forEach(p => {
+        p.addEventListener('click', () => {
+            payments.forEach(pp => pp.classList.remove('selected'));
+            p.classList.add('selected');
+            selectedPayment = p.getAttribute('data-payment');
+        });
+    });
+
+    bookBtn.addEventListener('click', () => {
+        const name = document.getElementById('userName').value.trim();
+        const phone = document.getElementById('userPhone').value.trim();
+        if (!name || !phone) { alert('Укажите имя и телефон'); return; }
+        if (!selectedSlot) { alert('Выберите дату'); return; }
+        if (!selectedPayment) { alert('Выберите способ оплаты'); return; }
+        const paymentNumber = '+79015355480';
+        const methodText = selectedPayment === 'tbank' ? 'Т-Банк' : 'СберБанк';
+        msgDiv.style.display = 'block';
+        msgDiv.innerHTML = `✅ ${name}, вы забронировали слот на ${selectedSlot}.<br><br>
+        📞 Мы свяжемся с вами по номеру ${phone}.<br><br>
+        💰 Оплата 1000 ₽ на номер <strong>${paymentNumber}</strong> (${methodText})<br>
+        ✉️ В комментарии: "Масала Кинг, ${name}"<br>
+        🎁 После оплаты получите ссылку на мастер-класс и рецепты.`;
+    });
+</script>
+<footer><div class="container"><p>Masala King — индийская кухня, доступная каждому в России</p></div></footer>
+</body>
+</html>
