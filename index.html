@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+    <title>Masala King · Indian Cooking Masterclass</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: 'Segoe UI', Roboto, 'Helvetica Neue', sans-serif;
+            background: #FEF3E2;
+            color: #2D1F1A;
+            line-height: 1.5;
+        }
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 24px;
+        }
+        .header {
+            background: white;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+        .nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            padding: 16px 0;
+        }
+        .logo h1 {
+            font-size: 1.8rem;
+            background: linear-gradient(135deg, #C0392B, #E67E22);
+            background-clip: text;
+            -webkit-background-clip: text;
+            color: transparent;
+        }
+        .nav-links {
+            display: flex;
+            gap: 32px;
+            font-weight: 600;
+        }
+        .nav-links a {
+            text-decoration: none;
+            color: #2D1F1A;
+            transition: 0.2s;
+        }
+        .nav-links a:hover, .nav-links .active {
+            color: #E67E22;
+        }
+        .btn {
+            display: inline-block;
+            padding: 12px 28px;
+            border-radius: 60px;
+            font-weight: 700;
+            text-decoration: none;
+            transition: 0.2s;
+            border: none;
+            cursor: pointer;
+        }
+        .btn-primary {
+            background: #E67E22;
+            color: white;
+            box-shadow: 0 4px 10px rgba(230,126,34,0.2);
+        }
+        .btn-primary:hover {
+            background: #C0392B;
+            transform: scale(0.97);
+        }
+        .hero {
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            gap: 40px;
+            padding: 60px 0 40px;
+        }
+        .hero-left {
+            flex: 1.2;
+        }
+        .hero-left h2 {
+            font-size: 3rem;
+            font-weight: 800;
+            margin-bottom: 16px;
+        }
+        .hero-left p {
+            font-size: 1.2rem;
+            margin-bottom: 28px;
+            color: #5E3A2C;
+        }
+        .hero-right {
+            flex: 1;
+            background: #FFE2C1;
+            border-radius: 40px;
+            padding: 20px;
+            text-align: center;
+        }
+        .hero-right img {
+            max-width: 100%;
+            border-radius: 32px;
+            width: 100%;
+            height: auto;
+        }
+        .section-title {
+            font-size: 2rem;
+            margin: 48px 0 24px;
+            color: #A04020;
+            border-left: 6px solid #E67E22;
+            padding-left: 20px;
+        }
+        .dish-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 28px;
+            margin: 40px 0;
+        }
+        .dish-card {
+            background: white;
+            border-radius: 32px;
+            overflow: hidden;
+            box-shadow: 0 8px 20px rgba(0,0,0,0.05);
+            transition: 0.2s;
+        }
+        .dish-card:hover {
+            transform: translateY(-5px);
+        }
+        .dish-card img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+        }
+        .dish-card .info {
+            padding: 18px;
+        }
+        .dish-card h3 {
+            font-size: 1.4rem;
+            margin-bottom: 6px;
+            color: #C0392B;
+        }
+        .price-badge {
+            background: #E67E22;
+            display: inline-block;
+            padding: 6px 20px;
+            border-radius: 60px;
+            color: white;
+            font-weight: bold;
+            margin-right: 12px;
+        }
+        footer {
+            background: #1F2E1E;
+            color: #EEDBC5;
+            text-align: center;
+            padding: 32px 0;
+            margin-top: 64px;
+            border-radius: 40px 40px 0 0;
+        }
+        @media (max-width: 750px) {
+            .nav { flex-direction: column; gap: 12px; }
+            .hero-left h2 { font-size: 2rem; }
+        }
+    </style>
+</head>
+<body>
+<div class="header">
+    <div class="container">
+        <div class="nav">
+            <div class="logo"><h1>👑 Masala King</h1></div>
+            <div class="nav-links">
+                <a href="index.html" class="active">Главная</a>
+                <a href="classes.html">Мастер-классы</a>
+                <a href="contact.html">Контакты</a>
+            </div>
+        </div>
+    </div>
+</div>
+
+<main class="container">
+    <div class="hero">
+        <div class="hero-left">
+            <h2>Indian Cooking <br>Masterclass</h2>
+            <p>Научитесь готовить настоящий Butter Chicken, хрустящие самосы и идеальный наан. Живые уроки, специи и атмосфера королевской кухни.</p>
+            <a href="classes.html" class="btn btn-primary">📅 Выбрать класс →</a>
+        </div>
+        <div class="hero-right">
+            <!-- NEW RELIABLE IMAGE URL (Unsplash) -->
+            <img src="https://images.unsplash.com/photo-1505253758473-96b7015fcd40?w=600&h=400&fit=crop" alt="Indian food thali">
+        </div>
+    </div>
+
+    <h2 class="section-title">🍛 Блюда, которые вы освоите</h2>
+    <div class="dish-grid">
+        <div class="dish-card">
+            <img src="https://images.unsplash.com/photo-1603894584373-5ac82b2ae398?w=400&h=200&fit=crop" alt="Butter Chicken">
+            <div class="info"><h3>Butter Chicken</h3><p>Нежное куриное карри с масляным соусом</p></div>
+        </div>
+        <div class="dish-card">
+            <img src="https://images.unsplash.com/photo-1563379091339-03b21cb4f04f?w=400&h=200&fit=crop" alt="Biryani">
+            <div class="info"><h3>Biryani</h3><p>Ароматный рис с пряностями и мясом</p></div>
+        </div>
+        <div class="dish-card">
+            <img src="https://images.unsplash.com/photo-1601050690597-df0568f70950?w=400&h=200&fit=crop" alt="Samosa">
+            <div class="info"><h3>Samosa</h3><p>Хрустящие треугольники с картофелем</p></div>
+        </div>
+        <div class="dish-card">
+            <img src="https://images.unsplash.com/photo-1589302168068-964664d93dc0?w=400&h=200&fit=crop" alt="Dosa">
+            <div class="info"><h3>Dosa</h3><p>Рисовый блинчик с самбаром и чатни</p></div>
+        </div>
+    </div>
+
+    <div style="background: white; border-radius: 40px; padding: 28px; text-align: center; margin: 30px 0;">
+        <span class="price-badge">1000 ₽ / человек</span>
+        <span style="font-weight: 500;">👥 до 10 участников в группе</span>
+        <div style="margin-top: 20px;"><a href="classes.html" class="btn btn-primary">📞 Забронировать место</a></div>
+    </div>
+</main>
+
+<footer>
+    <div class="container">
+        <p>Masala King — авторский мастер-класс по индийской кухне для русских гурманов</p>
+        <p style="margin-top: 12px;">✨ Специи, юмор и 1000 ₽ за место ✨</p>
+    </div>
+</footer>
+</body>
+</html>
