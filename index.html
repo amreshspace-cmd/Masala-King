@@ -1,0 +1,396 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+    <title>Masala King · Indian Cooking Masterclass for Russians</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Roboto, 'Helvetica Neue', sans-serif;
+            background: linear-gradient(135deg, #fff5e6 0%, #fee9d1 100%);
+            padding: 1rem;
+        }
+
+        .page {
+            max-width: 1200px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 48px;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+            overflow: hidden;
+        }
+
+        .content {
+            padding: 2rem 2rem 2.5rem;
+        }
+
+        h1 {
+            font-size: 3rem;
+            font-weight: 800;
+            background: linear-gradient(135deg, #c0392b, #e67e22);
+            background-clip: text;
+            -webkit-background-clip: text;
+            color: transparent;
+            margin-bottom: 0.5rem;
+        }
+
+        .sub {
+            font-size: 1.2rem;
+            color: #b85c1a;
+            border-left: 4px solid #e67e22;
+            padding-left: 1rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .price-box {
+            background: #e67e22;
+            display: inline-block;
+            padding: 0.5rem 1.8rem;
+            border-radius: 40px;
+            color: white;
+            font-weight: bold;
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .contact-row {
+            background: #f5e7d9;
+            padding: 1rem 1.5rem;
+            border-radius: 60px;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            align-items: center;
+            gap: 1rem;
+            margin-bottom: 1.8rem;
+        }
+
+        .contact-item a {
+            color: #c0392b;
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        .badge {
+            background: #2c5f2d;
+            color: white;
+            border-radius: 60px;
+            padding: 0.3rem 1rem;
+            font-size: 0.9rem;
+        }
+
+        h2 {
+            font-size: 1.8rem;
+            margin: 1.5rem 0 1rem;
+            color: #a04020;
+        }
+
+        .booking-section {
+            background: #fef8f0;
+            border-radius: 32px;
+            padding: 1.5rem;
+            margin: 1.5rem 0;
+            border: 1px solid #ffdbb5;
+        }
+
+        .form-group {
+            margin-bottom: 1rem;
+        }
+
+        label {
+            font-weight: 600;
+            display: block;
+            margin-bottom: 0.3rem;
+        }
+
+        input {
+            width: 100%;
+            padding: 0.8rem;
+            border-radius: 60px;
+            border: 1px solid #e2c7aa;
+            font-size: 1rem;
+            background: white;
+        }
+
+        .slot-options, .payment-methods {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.8rem;
+            margin: 0.8rem 0 1.2rem;
+        }
+
+        .slot-btn, .payment-card {
+            background: #f0dbc8;
+            border: none;
+            padding: 0.6rem 1.2rem;
+            border-radius: 40px;
+            cursor: pointer;
+            font-weight: 500;
+            transition: 0.2s;
+        }
+
+        .slot-btn.selected, .payment-card.selected {
+            background: #e67e22;
+            color: white;
+        }
+
+        .donation-box {
+            background: #e6d5c0;
+            border-radius: 24px;
+            padding: 1rem;
+            margin: 1rem 0;
+            text-align: center;
+        }
+
+        .btn-book {
+            background: #c0392b;
+            color: white;
+            border: none;
+            font-size: 1.2rem;
+            font-weight: bold;
+            padding: 1rem;
+            border-radius: 60px;
+            cursor: pointer;
+            width: 100%;
+            margin-top: 1rem;
+        }
+
+        .info-text {
+            font-size: 0.9rem;
+            margin-top: 1rem;
+            padding: 0.8rem;
+            border-radius: 24px;
+            background: #eef3ea;
+            color: #2c5f2d;
+        }
+
+        .cuisine-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+            gap: 1rem;
+            margin: 1rem 0;
+        }
+
+        .cuisine-card {
+            background: #fef6ed;
+            border-radius: 20px;
+            padding: 0.8rem 1rem;
+        }
+
+        .cuisine-card strong {
+            color: #c0392b;
+        }
+
+        .gallery {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 1.5rem;
+            margin: 2rem 0;
+        }
+
+        .gallery-item {
+            background: #fffaf2;
+            border-radius: 28px;
+            overflow: hidden;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+            text-align: center;
+            padding-bottom: 1rem;
+        }
+
+        .gallery-item img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+            display: block;
+        }
+
+        .gallery-item p {
+            padding: 0.8rem 0.5rem 0;
+            font-weight: 500;
+            color: #b85c1a;
+        }
+
+        footer {
+            text-align: center;
+            font-size: 0.8rem;
+            color: #b97f5c;
+            border-top: 1px solid #f2dbc8;
+            padding-top: 1.5rem;
+            margin-top: 1rem;
+        }
+
+        @media (max-width: 650px) {
+            .content { padding: 1.5rem; }
+            h1 { font-size: 2.2rem; }
+        }
+    </style>
+</head>
+<body>
+<div class="page">
+    <div class="content">
+        <h1>👑 Masala King</h1>
+        <div class="sub">Индийский кулинарный мастер-класс для россиян · 1000 ₽ · до 10 человек</div>
+
+        <div class="price-box">🇷🇺 1000 ₽ / место</div>
+
+        <div class="contact-row">
+            <div class="contact-item">📞 <a href="tel:+79336877293">+7 933 687 7293</a></div>
+            <div class="contact-item">💬 <a href="https://wa.me/79336877293" target="_blank">WhatsApp</a></div>
+            <div class="contact-item">📱 <a href="https://t.me/+79336877293" target="_blank">Telegram</a></div>
+            <div class="badge">👥 10 мест на класс</div>
+        </div>
+
+        <!-- Slot booking section -->
+        <div class="booking-section">
+            <h2>📅 Забронируйте место</h2>
+            <div class="form-group">
+                <label>Ваше имя</label>
+                <input type="text" id="fullName" placeholder="Иван Петров">
+            </div>
+            <div class="form-group">
+                <label>Телефон (для связи)</label>
+                <input type="tel" id="phoneUser" placeholder="+7 XXX XXX XX XX">
+            </div>
+            <div class="form-group">
+                <label>Email (необязательно)</label>
+                <input type="email" id="emailUser" placeholder="mail@example.ru">
+            </div>
+
+            <label>Выберите дату и время:</label>
+            <div class="slot-options" id="slotContainer">
+                <button type="button" class="slot-btn" data-slot="15 июня, вс 12:00">15 июня, 12:00</button>
+                <button type="button" class="slot-btn" data-slot="22 июня, вс 14:00">22 июня, 14:00</button>
+                <button type="button" class="slot-btn" data-slot="29 июня, вс 11:00">29 июня, 11:00</button>
+                <button type="button" class="slot-btn" data-slot="6 июля, вс 13:00">6 июля, 13:00</button>
+            </div>
+
+            <label>Способ оплаты:</label>
+            <div class="payment-methods" id="paymentContainer">
+                <button type="button" class="payment-card" data-payment="tbank">🏦 Т-Банк (Тинькофф)</button>
+                <button type="button" class="payment-card" data-payment="sber">🏦 СберБанк</button>
+            </div>
+
+            <div class="donation-box">
+                💝 <strong>Поддержать проект (донат)</strong> 💝<br>
+                Вы можете отправить любую сумму на тот же номер <strong>+7 901 535 5480</strong> (Т-Банк / Сбер).<br>
+                Укажите «Донат для Masala King» — каждое пожертвование помогает развивать мастер-классы.
+            </div>
+
+            <button class="btn-book" id="bookBtn">✅ Забронировать слот за 1000 ₽</button>
+            <div id="bookingMessage" class="info-text" style="display: none;"></div>
+        </div>
+
+        <!-- PHOTO GALLERY (placeholders – replace with your own photos) -->
+        <h2>📸 Фото с наших мастер-классов</h2>
+        <div class="gallery">
+            <div class="gallery-item">
+                <img src="class1.jpg" alt="Готовим Butter Chicken">
+                <p>🍛 Butter Chicken в процессе</p>
+            </div>
+            <div class="gallery-item">
+                <img src="class2.jpg" alt="Группа за работой">
+                <p>👩‍🍳 Участники готовят вместе</p>
+            </div>
+            <div class="gallery-item">
+                <img src="spices.jpg" alt="Индийские специи">
+                <p>🌶️ Набор специй Masala King</p>
+            </div>
+            <div class="gallery-item">
+                <img src="finished-dishes.jpg" alt="Готовые блюда">
+                <p>🍽️ Итог — настоящий индийский стол</p>
+            </div>
+        </div>
+
+        <h2>🍛 Что вы научитесь готовить?</h2>
+        <div class="cuisine-grid">
+            <div class="cuisine-card"><strong>Северная Индия</strong><br>Butter Chicken, Naan, Dal Makhani</div>
+            <div class="cuisine-card"><strong>Южная Индия</strong><br>Dosa, Sambar, Idli</div>
+            <div class="cuisine-card"><strong>Западная Индия</strong><br>Dhokla, Thepla, овощные сабджи</div>
+            <div class="cuisine-card"><strong>Восточная Индия</strong><br>Рыбное карри, Sandesh</div>
+            <div class="cuisine-card"><strong>Могольская кухня</strong><br>Biryani, Seekh Kebab, Korma</div>
+            <div class="cuisine-card"><strong>Уличная еда</strong><br>Pani Puri, Masala Chai, Samosa Chaat</div>
+        </div>
+
+        <footer>
+            Masala King — живой мастер-класс для 10 участников. После бронирования вы получите инструкцию для оплаты 1000 ₽ на номер <strong>+7 901 535 5480</strong> (Т-Банк / Сбер).<br>
+            По вопросам: <a href="https://wa.me/79336877293" target="_blank">WhatsApp +7 933 687 7293</a> · Место подтверждается после оплаты.
+        </footer>
+    </div>
+</div>
+
+<script>
+    let selectedSlot = null;
+    let selectedPayment = null;
+
+    const slotBtns = document.querySelectorAll('.slot-btn');
+    const paymentBtns = document.querySelectorAll('.payment-card');
+    const bookBtn = document.getElementById('bookBtn');
+    const messageDiv = document.getElementById('bookingMessage');
+
+    slotBtns.forEach(btn => {
+        btn.addEventListener('click', () => {
+            slotBtns.forEach(b => b.classList.remove('selected'));
+            btn.classList.add('selected');
+            selectedSlot = btn.getAttribute('data-slot');
+        });
+    });
+
+    paymentBtns.forEach(btn => {
+        btn.addEventListener('click', () => {
+            paymentBtns.forEach(b => b.classList.remove('selected'));
+            btn.classList.add('selected');
+            selectedPayment = btn.getAttribute('data-payment');
+        });
+    });
+
+    bookBtn.addEventListener('click', () => {
+        const name = document.getElementById('fullName').value.trim();
+        const phone = document.getElementById('phoneUser').value.trim();
+
+        if (!name || !phone) {
+            showMessage('❌ Пожалуйста, укажите имя и телефон.', '#c0392b');
+            return;
+        }
+        if (!selectedSlot) {
+            showMessage('❌ Выберите дату и время мастер-класса.', '#c0392b');
+            return;
+        }
+        if (!selectedPayment) {
+            showMessage('❌ Выберите способ оплаты (Т-Банк или Сбер).', '#c0392b');
+            return;
+        }
+
+        const paymentNumber = '+79015355480';
+        const paymentMethodText = selectedPayment === 'tbank' ? 'Т-Банк' : 'СберБанк';
+
+        const msg = `
+            ✅ ${name}, вы забронировали слот на ${selectedSlot}.<br><br>
+            📞 Мы свяжемся с вами по номеру ${phone} для подтверждения.<br><br>
+            💰 Оплата 1000 ₽ на номер <strong>${paymentNumber}</strong> (${paymentMethodText}).<br>
+            ✉️ В комментарии к платежу укажите: <strong>"Масала Кинг, ${name}"</strong>.<br><br>
+            🎁 После оплаты вы получите ссылку на мастер-класс и подробные рецепты.<br>
+            🤝 Если хотите сделать донат — отправьте любую сумму на тот же номер. Спасибо!
+        `;
+        showMessage(msg, '#2c5f2d', true);
+    });
+
+    function showMessage(text, color, isHtml = false) {
+        messageDiv.style.display = 'block';
+        messageDiv.style.color = color;
+        messageDiv.style.background = color === '#c0392b' ? '#ffe6e6' : '#e6f4e6';
+        if (isHtml) {
+            messageDiv.innerHTML = text;
+        } else {
+            messageDiv.innerText = text;
+        }
+        messageDiv.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+    }
+</script>
+</body>
+</html>
